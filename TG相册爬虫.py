@@ -110,68 +110,6 @@ def getCartoon(articleUrl):
         # 获取单张漫画
         multiGetImg(imgInfo)
     return True
-#     # 获取h1标签的文本
-#     soup = BeautifulSoup(resp.text, 'html.parser')
-#     titleElem = soup.select('div#info h2')
-#     # 标题可能为空，此时取英文标题
-#     if(titleElem):
-#         title = titleElem[0].get_text()
-#     else:
-#         title = soup.select('div#info h1.title')[0].get_text()
-#     # title = pTitle.findall(resp.text)[0]
-#     # 替换文件夹敏感字符
-#     title = title.replace('<', '-').replace('>', '-').replace('?', '-').replace(':', '-').replace(
-#         '|', '-').replace('/', '-').replace('\\', '-').replace('"', '-').replace('*', '-')
-#     mPath = basePath+'/'+title
-#     createDir(mPath)
-
-#     # 图片列表就再当前页面
-#     pageUrl = articleUrl
-
-#     soup = BeautifulSoup(askUrl.request(url=pageUrl).text, 'html.parser')
-
-#     imgs = soup.select('div.thumbs div.thumb-container img.lazyload')
-
-#     print('\033[1;33;40m当前漫画：%s,\n等待3秒后下载...\033[0m' % (title))
-#     time.sleep(3)
-
-#     resp2 = askUrl.request(url=str(pageUrl)+'/1/', proxies=proxies)
-#     soup2 = BeautifulSoup(resp2.text, 'html.parser')
-
-#     downImg = soup2.select('div#content section#image-container img')
-
-#     downUrl = re.search('src="(.+//.+/.+/.+/).*"', str(downImg)).group(1)
-
-#     for img in imgs:
-
-#         thumbUrl = re.search('src="(.*?)"', str(img)).group(1)
-#         # 缩略图的文件名
-#         tempName = thumbUrl.split('/')[-1]
-#         # 文件后缀
-#         suffix = tempName.split('.')[-1]
-#         # 文件索引
-#         count = re.search('(\d+)*.*', str(tempName)).group(1)
-
-#         imgFileName = str(count)+'.'+str(suffix)
-
-#         imgUrl = str(downUrl)+str(count)+'.'+str(suffix)
-#         imgInfo = {}
-#         imgInfo['url'] = imgUrl
-#         imgInfo['fileName'] = imgFileName
-#         imgInfo['mPath'] = mPath
-#         imgInfos.append(imgInfo)
-
-#         # 获取单张漫画
-#         multiGetImg(imgInfo)
-
-#     # # 开5个进程
-#     # pool.map(multiGetImg, imgInfos)
-#     # pool.close()
-#     # pool.join()
-#     print('\033[1;32;40m下载完成...\033[0m\a')
-
-#     return True
-
 
 def multiGetImg(imgInfo):
     imgUrl = imgInfo['url']
