@@ -105,8 +105,6 @@ def getCartoon(articleUrl):
         imgInfo['mPath'] = mPath
         imgInfos.append(imgInfo)
 
-        print(imgInfo)
-
         # 获取单张漫画
         multiGetImg(imgInfo)
     return True
